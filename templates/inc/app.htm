@@ -12,9 +12,7 @@
 <body>
 
 <div id="app">
-    <div class="container">
-        {% block app %}{% endblock %}
-    </div>
+    {% block app %}{% endblock %}
 </div>
 
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
