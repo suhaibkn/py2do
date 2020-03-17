@@ -1,0 +1,18 @@
+* {}
+
+body {
+    font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+    font-size: 24px;
+
+    margin: 5px;
+    padding: 5px;
+
+    background-color: cadetblue;
+}
+
+div#app {
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px 1px rgb(0, 0, 0, .8);
+}
