@@ -3,6 +3,7 @@ from datetime import datetime
 
 from flask import Flask, url_for, redirect, jsonify, request
 from flask import render_template as view
+
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
