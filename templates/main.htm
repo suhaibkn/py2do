@@ -1,7 +1,7 @@
 {% extends 'inc/app.htm' %}
 
 {% block app %}
-    <div class="container">
+    <div class="container" xmlns:v-bind="http://www.w3.org/1999/xhtml">
         <div class="sidebar">
             <div class="header">
                 Py2Do
@@ -28,11 +28,13 @@
                     <li v-for="i in todos" :key="i.id"
                         v-on:click="toggleStatus(i)"
                         v-bind:class="{ active: !i.done, completed: i.done }"
-                    >{{ i.todo }}</li>
+                    >{{ i.todo }}
+                    </li>
                 </ul>
-                <ul v-else>
-                    <li class="active">You have nothing to do</li>
-                </ul>
+                <div v-else class="nothing">
+                    You have nothing to do. <br>
+                    Enter an item in the below box and hit enter.
+                </div>
                 {% endraw %}
             </div>
         </div>

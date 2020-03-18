@@ -9,24 +9,26 @@ var app = new Vue({
     methods: {
         newTodo: function (event) {
             event.preventDefault();
+            todo = [];
+            //this.todos = []
             let todo_data = {
                 todo: document.getElementById('new-todo').value,
                 created_at: (new Date()).toISOString()
             };
 
-            this.todos.push(todo_data);
             document.getElementById('new-todo').value = '';
 
             axios
                 .post('http://127.0.0.1:5000/api/new', todo_data)
                 .then(function (response) {
-                    console.log(response);
-                    this.todos = response.data
+                    return response.data
+                })
+                .then((data) => {
+                    this.todos = data
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-
         },
         refreshData: function (event) {
             this.loading = true;
@@ -50,9 +52,9 @@ var app = new Vue({
         },
         toggleStatus: function (item) {
             this.loading = true;
-            console.log(item.id)
+            console.log(item.id);
             axios
-                .get('http://127.0.0.1:5000/api/toggledone/'+item.id)
+                .get('http://127.0.0.1:5000/api/toggledone/' + item.id)
                 .then(response => (this.todos = response.data))
                 .finally(() => {
                     this.loading = false

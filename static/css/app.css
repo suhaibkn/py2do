@@ -111,6 +111,18 @@ body {
     margin: 4px 15px;
 }
 
+.container > .main > .list > .nothing {
+    padding: 10px;
+}
+
+.container > .main > .list > .nothing::before {
+    content: ':)';
+    display: block;
+    padding: 2px;
+    margin-bottom: 20px;
+    font-size: 46px;
+}
+
 .sidebar > .header {
     background-color: rgba(0, 0, 0, 0.2);
     text-align: right;
