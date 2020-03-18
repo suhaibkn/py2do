@@ -9,7 +9,7 @@
             <div class="menu">
                 <ul>
                     <li><a href="#">Refresh</a></li>
-                    <li><a href="#">Add new todo</a></li>
+                    <li><a href="#" v-on:click="newTodo">Add new todo</a></li>
                     <li><a href="#">Show completed</a></li>
                     <li><a href="#">Show archived</a></li>
                     <li><a href="#">Cleanup</a></li>
@@ -17,9 +17,11 @@
             </div>
         </div>
         <div class="main">
-            <div class="new">
-                <input type="text" placeholder="What do you plan to do?" tabindex="1">
-            </div>
+
+            <form class="new" v-on:submit="newTodo">
+                <input type="text" id="new-todo" placeholder="What do you plan to do?" tabindex="1">
+            </form>
+
             <div class="list">
                 {% raw %}
                 <ul>
