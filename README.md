@@ -5,6 +5,11 @@ A Python-Flask-Vue based single-page Todo app
 
 This project is written in Python3 and might not work in Python2
 
+### Screenshots
+
+![Screenshot 1](https://user-images.githubusercontent.com/8045498/76949589-c3a4f000-692e-11ea-8ebc-a86493c84488.jpg)
+![Screenshot 2](https://user-images.githubusercontent.com/8045498/76949593-c56eb380-692e-11ea-8a1e-7df9156c0de0.jpg)
+
 ### Requirements
 The following python modules should be installed  
   
@@ -39,5 +44,6 @@ These can be installed by importing the `./requirements.txt` file
 ### Contributions
 I created this project as a tutorial for Python-Flask-Vue integrations. Don't mind tweaking this code as required.  
 All suggestions and feedback are welcomed. Feel free to send a PR if figured out any bug.  
-
+  
+---
 suhaibkn
