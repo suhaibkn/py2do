@@ -9,9 +9,9 @@
             <div class="menu">
                 <ul>
                     <li><a href="#" v-on:click="refreshData">Refresh</a></li>
-                    <li><a href="#" v-on:click="newTodo">Add new todo</a></li>
-                    <li><a href="#">Show completed</a></li>
-                    <li><a href="#">Show archived</a></li>
+                    <li><a href="#" v-on:click="newFocus">Add new todo</a></li>
+{#                    <li><a href="#">Show completed</a></li>#}
+{#                    <li><a href="#">Show archived</a></li>#}
                     <li><a href="#" v-on:click="cleanData">Cleanup</a></li>
                 </ul>
             </div>
@@ -24,8 +24,14 @@
 
             <div class="list">
                 {% raw %}
-                <ul>
-                    <li class="active" v-for="i in todos">{{ i.todo }}</li>
+                <ul v-if="available">
+                    <li v-for="i in todos" :key="i.id"
+                        v-on:click="toggleStatus(i)"
+                        v-bind:class="{ active: !i.done, completed: i.done }"
+                    >{{ i.todo }}</li>
+                </ul>
+                <ul v-else>
+                    <li class="active">You have nothing to do</li>
                 </ul>
                 {% endraw %}
             </div>

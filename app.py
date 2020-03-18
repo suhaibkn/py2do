@@ -28,7 +28,7 @@ class Todo(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, _todo, _time=None):
+    def __init__(self, _todo=None, _time=None):
         self.todo = _todo
 
     @staticmethod
@@ -56,30 +56,35 @@ class Todo(db.Model):
         Todo.query.delete()
         return db.session.commit()
 
+    @staticmethod
     def remove(self, _id):
-        self.query.filter(Todo.id == _id).delete()
-        return self.session.commit()
+        Todo.query.filter(Todo.id == _id).delete()
+        return db.session.commit()
 
-    def update(self, _id, _todo):
-        self.query.filter(Todo.id == _id).update({
+    @staticmethod
+    def update(_id, _todo):
+        Todo.query.filter(Todo.id == _id).update({
             Todo.todo: _todo,
             Todo.updated_at: datetime.now()
         })
-        return self.session.commit()
+        return db.session.commit()
 
-    def toggle_done(self, _id):
-        self.query.filter(Todo.id == _id).update({
-            Todo.done: True,
+    @staticmethod
+    def toggle_done(_id):
+        prev = Todo.query.filter(Todo.id == _id).first().done
+        Todo.query.filter(Todo.id == _id).update({
+            Todo.done: not prev,
             Todo.updated_at: datetime.now()
         })
-        return self.session.commit()
+        return db.session.commit()
 
-    def toggle_archive(self, _id):
-        self.query.filter(Todo.id == _id).update({
+    @staticmethod
+    def toggle_archive(_id):
+        Todo.query.filter(Todo.id == _id).update({
             Todo.delete: True,
             Todo.updated_at: datetime.now()
         })
-        return self.session.commit()
+        return db.session.commit()
 
 
 @app.route('/')
@@ -96,7 +101,7 @@ def main():
 
 # <><><><><>   REST_API   <><><><><> #
 @app.route('/api/get/<string:_type>', methods=['GET'])
-def _api_get(_type='active'):
+def _api_get(_type='all'):
     data = []
     if 'all' == _type:
         data = Todo.get_all()
@@ -119,6 +124,12 @@ def _api_new():
 @app.route('/api/clean', methods=['DELETE'])
 def _api_clean():
     Todo.clean()
+    return _api_get(), 200
+
+
+@app.route('/api/toggledone/<int:_id>', methods=['GET'])
+def _api_done(_id):
+    Todo.toggle_done(_id)
     return _api_get(), 200
 
 

@@ -32,7 +32,7 @@ var app = new Vue({
             this.loading = true;
             this.todos = [];
             axios
-                .get('http://127.0.0.1:5000/api/get/active')
+                .get('http://127.0.0.1:5000/api/get/all')
                 .then(response => (this.todos = response.data))
                 .finally(() => {
                     this.loading = false
@@ -47,9 +47,30 @@ var app = new Vue({
                 .finally(() => {
                     this.loading = false
                 })
-        }
+        },
+        toggleStatus: function (item) {
+            this.loading = true;
+            console.log(item.id)
+            axios
+                .get('http://127.0.0.1:5000/api/toggledone/'+item.id)
+                .then(response => (this.todos = response.data))
+                .finally(() => {
+                    this.loading = false
+                })
+        },
+        newFocus: function (item) {
+            document.getElementById('new-todo').focus();
+        },
     },
     mounted() {
         this.refreshData()
     },
+    computed: {
+        count: function () {
+            return this.todos.length
+        },
+        available: function () {
+            return (this.count > 0)
+        }
+    }
 });
