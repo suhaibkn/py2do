@@ -8,7 +8,7 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="#">Refresh</a></li>
+                    <li><a href="#" v-on:click="refreshData">Refresh</a></li>
                     <li><a href="#" v-on:click="newTodo">Add new todo</a></li>
                     <li><a href="#">Show completed</a></li>
                     <li><a href="#">Show archived</a></li>
@@ -25,17 +25,7 @@
             <div class="list">
                 {% raw %}
                 <ul>
-
-                    <li class="active" v-for="i in todos">
-                        {{ i.todo }}
-                    </li>
-                    <li class="active">Do this as well</li>
-                    <li class="active">While you're at that, do this</li>
-                    <li class="active">If you have the time, do this as well</li>
-                    <li class="completed">These 2 are archived</li>
-                    <li class="completed">Along with this one</li>
-                    <li class="deleted">This is deleted</li>
-                    <li class="deleted">As in already completed or archived</li>
+                    <li class="active" v-for="i in todos">{{ i.todo }}</li>
                 </ul>
                 {% endraw %}
             </div>

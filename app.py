@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-from flask import Flask, url_for, redirect, jsonify
+from flask import Flask, url_for, redirect, jsonify, request
 from flask import render_template as view
 from flask_sqlalchemy import SQLAlchemy
 
@@ -28,7 +28,7 @@ class Todo(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, _todo):
+    def __init__(self, _todo, _time=None):
         self.todo = _todo
 
     @staticmethod
@@ -79,7 +79,7 @@ class Todo(db.Model):
 
 @app.route('/')
 def index():
-    #Todo('Do this dynamically...').save()
+    # Todo('Do this dynamically...').save()
     return redirect(url_for('main'))
 
 
@@ -100,6 +100,14 @@ def _api_get(_type='active'):
         data = Todo.get_all_archived()
 
     return jsonify(data)
+
+
+@app.route('/api/new', methods=['POST'])
+def _api_new():
+    data = request.json
+    Todo(data['todo']).save()
+
+    return _api_get(), 200
 
 
 if __name__ == '__main__':
