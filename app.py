@@ -79,6 +79,7 @@ class Todo(db.Model):
 
 @app.route('/')
 def index():
+    #Todo('Do this dynamically...').save()
     return redirect(url_for('main'))
 
 

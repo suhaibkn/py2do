@@ -1,6 +1,6 @@
 * {
-    border: 1px dot-dot-dash magenta;
-    outline: 1px dashed cyan;
+    /*border: 1px dot-dot-dash magenta;*/
+    /*outline: 1px dashed cyan;*/
 }
 
 body {
@@ -69,6 +69,7 @@ body {
 .container > .main > .list > ul > li {
     display: flex;
     margin: 4px;
+    padding: 5px 10px;
     transition-duration: 0.3s;
 }
 .container > .main > .list > ul > li > .text{ flex-grow: 1; }

@@ -21,15 +21,11 @@
                 <input type="text" placeholder="What do you plan to do?" tabindex="1">
             </div>
             <div class="list">
+                {% raw %}
                 <ul>
-                    <li class="active">
-                        <span class="text">
-                            Do this
-                        </span>
-                        <span class="controller">
-                            <a href="#">done</a>
-                            <a href="#">archive</a>
-                        </span>
+
+                    <li class="active" v-for="i in todos">
+                        {{ i.todo }}
                     </li>
                     <li class="active">Do this as well</li>
                     <li class="active">While you're at that, do this</li>
@@ -39,6 +35,7 @@
                     <li class="deleted">This is deleted</li>
                     <li class="deleted">As in already completed or archived</li>
                 </ul>
+                {% endraw %}
             </div>
         </div>
     </div>
