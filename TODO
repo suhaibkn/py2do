@@ -1,0 +1,5 @@
++ Auto create `db.sqlite` file and migrate table
++ Maybe add responsive designing for mobile devices
++ Implement soft deleting and archiving
++ Sorting by date (oldest, newest)
++ Use Marshmallow package for json encoding 

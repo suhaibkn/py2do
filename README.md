@@ -3,7 +3,7 @@ A Python-Flask-Vue based single-page Todo app
 
 ---
 
-This project is written in Python3 and might not work in Python2
+> This project is written in Python3 and might not work in Python2
 
 ### Screenshots
 
@@ -38,7 +38,12 @@ These can be installed by importing the `./requirements.txt` file
 
 
 ### Todos
-1. Auto create `db.sqlite` file and migrate table
++ Auto create `db.sqlite` file and migrate table
++ Maybe add responsive designing for mobile devices
++ Implement soft deleting and archiving
++ Sorting by date (oldest, newest)
++ Use Marshmallow package for json encoding 
++ ...  
 
 
 ### Contributions
