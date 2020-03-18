@@ -57,40 +57,59 @@ body {
     color: #333333;
 }
 
-.container > .main > div.new > input::placeholder { font-style: italic; }
-.container > .main > div.new > input:hover { transition-duration: 0.3s; background-color: rgba(0, 0, 0, 0.3); }
-.container > .main > div.new > input:focus { transition-duration: 0.3s; background-color: rgba(0, 0, 0, 0.2); }
-.container > .main > .list{ flex-grow: 1; }
+.container > .main > div.new > input::placeholder {
+    font-style: italic;
+}
+
+.container > .main > div.new > input:hover {
+    transition-duration: 0.3s;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.container > .main > div.new > input:focus {
+    transition-duration: 0.3s;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.container > .main > .list {
+    flex-grow: 1;
+}
 
 .container > .main > .list > ul {
     list-style-type: none;
-    margin: 0px; padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
+
 .container > .main > .list > ul > li {
     display: flex;
     margin: 4px;
-    padding: 5px 10px;
+    padding: 5px 15px;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
-.container > .main > .list > ul > li > .text{ flex-grow: 1; }
-.container > .main > .list > ul > li > .controller {
-    transition-duration: 0.3s; font-size: 16px;
+
+.container > .main > .list > ul > li.active {
+    background-color: rgba(104, 190, 203, 0.2);
 }
-.container > .main > .list > ul > li:hover > .controller {
+
+.container > .main > .list > ul > li.completed {
+    background-color: rgba(134, 203, 70, 0.2);
+    color: #BBB;
+    text-decoration: line-through
+}
+
+.container > .main > .list > ul > li.deleted {
+    background-color: rgba(203, 75, 44, 0.2);
+    color: #CCC;
+    text-decoration: line-through
+}
+
+.container > .main > .list > ul > li:hover {
     transition-duration: 0.3s;
+    background-color: rgba(104, 190, 203, 0.3);
+    margin: 4px 15px;
 }
-.container > .main > .list > ul > li > .controller > a {
-    padding: 1px 3px;
-    line-height: 28px;
-    margin: 0px 2px 0px 0px;
-    border: 0;
-    border-radius: 4px;
-    color: rgba(0,0,0,0.2);
-    background-color: rgba(0,0,0,0.05);
-}
-.container > .main > .list > ul > li.active { background-color: rgba(104, 190, 203, 0.2); }
-.container > .main > .list > ul > li.completed { background-color: rgba(134, 203, 70, 0.2); color: #BBB; text-decoration: line-through}
-.container > .main > .list > ul > li.deleted { background-color: rgba(203, 75, 44, 0.2); color: #CCC; text-decoration: line-through }
 
 .sidebar > .header {
     background-color: rgba(0, 0, 0, 0.2);
@@ -124,4 +143,7 @@ body {
 }
 
 /* <><><><><><><> Generic fix-its <><><><><><><> */
-a { text-decoration: none; color: #FFF; }
+a {
+    text-decoration: none;
+    color: #FFF;
+}

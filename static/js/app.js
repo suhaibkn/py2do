@@ -37,6 +37,16 @@ var app = new Vue({
                 .finally(() => {
                     this.loading = false
                 })
+        },
+        cleanData: function (event) {
+            this.loading = true;
+            this.todos = [];
+            axios
+                .delete('http://127.0.0.1:5000/api/clean')
+                .then(response => (this.todos = response.data))
+                .finally(() => {
+                    this.loading = false
+                })
         }
     },
     mounted() {

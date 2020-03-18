@@ -51,6 +51,11 @@ class Todo(db.Model):
         db.session.add(self)
         return db.session.commit()
 
+    @staticmethod
+    def clean():
+        Todo.query.delete()
+        return db.session.commit()
+
     def remove(self, _id):
         self.query.filter(Todo.id == _id).delete()
         return self.session.commit()
@@ -80,6 +85,7 @@ class Todo(db.Model):
 @app.route('/')
 def index():
     # Todo('Do this dynamically...').save()
+    # Todo.clean()
     return redirect(url_for('main'))
 
 
@@ -107,6 +113,12 @@ def _api_new():
     data = request.json
     Todo(data['todo']).save()
 
+    return _api_get(), 200
+
+
+@app.route('/api/clean', methods=['DELETE'])
+def _api_clean():
+    Todo.clean()
     return _api_get(), 200
 
 
